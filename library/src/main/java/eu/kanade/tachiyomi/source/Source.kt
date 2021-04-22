@@ -1,8 +1,8 @@
 package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.Page
-import eu.kanade.tachiyomi.source.model.SChapter
-import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SEpisode
+import eu.kanade.tachiyomi.source.model.SAnime
 import rx.Observable
 
 /**
@@ -21,24 +21,24 @@ interface Source {
     val name: String
 
     /**
-     * Returns an observable with the updated details for a manga.
+     * Returns an observable with the updated details for a anime.
      *
-     * @param manga the manga to update.
+     * @param anime the anime to update.
      */
-    fun fetchMangaDetails(manga: SManga): Observable<SManga>
+    fun fetchAnimeDetails(anime: SAnime): Observable<SAnime>
 
     /**
-     * Returns an observable with all the available chapters for a manga.
+     * Returns an observable with all the available episodes for a anime.
      *
-     * @param manga the manga to update.
+     * @param anime the anime to update.
      */
-    fun fetchChapterList(manga: SManga): Observable<List<SChapter>>
+    fun fetchEpisodeList(anime: SAnime): Observable<List<SEpisode>>
 
     /**
-     * Returns an observable with the list of pages a chapter has.
+     * Returns an observable with the list of pages a episode has.
      *
-     * @param chapter the chapter.
+     * @param episode the episode.
      */
-    fun fetchPageList(chapter: SChapter): Observable<List<Page>>
+    fun fetchPageList(episode: SEpisode): Observable<List<Page>>
 
 }

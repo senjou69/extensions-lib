@@ -63,140 +63,140 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
+     * Returns an observable containing a page with a list of anime. Normally it's not needed to
      * override this method.
      *
      * @param page the page number to retrieve.
      */
-    override fun fetchPopularManga(page: Int): Observable<MangasPage> {
+    override fun fetchPopularAnime(page: Int): Observable<AnimesPage> {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the request for the popular manga given the page.
+     * Returns the request for the popular anime given the page.
      *
      * @param page the page number to retrieve.
      */
-    abstract protected fun popularMangaRequest(page: Int): Request
+    abstract protected fun popularAnimeRequest(page: Int): Request
 
     /**
-     * Parses the response from the site and returns a [MangasPage] object.
+     * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    abstract protected fun popularMangaParse(response: Response): MangasPage
+    abstract protected fun popularAnimeParse(response: Response): AnimesPage
 
     /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
+     * Returns an observable containing a page with a list of anime. Normally it's not needed to
      * override this method.
      *
      * @param page the page number to retrieve.
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
+    override fun fetchSearchAnime(page: Int, query: String, filters: FilterList): Observable<AnimesPage> {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the request for the search manga given the page.
+     * Returns the request for the search anime given the page.
      *
      * @param page the page number to retrieve.
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    abstract protected fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
+    abstract protected fun searchAnimeRequest(page: Int, query: String, filters: FilterList): Request
 
     /**
-     * Parses the response from the site and returns a [MangasPage] object.
+     * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    abstract protected fun searchMangaParse(response: Response): MangasPage
+    abstract protected fun searchAnimeParse(response: Response): AnimesPage
 
     /**
-     * Returns an observable containing a page with a list of latest manga updates.
+     * Returns an observable containing a page with a list of latest anime updates.
      *
      * @param page the page number to retrieve.
      */
-    override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
+    override fun fetchLatestUpdates(page: Int): Observable<AnimesPage> {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the request for latest manga given the page.
+     * Returns the request for latest anime given the page.
      *
      * @param page the page number to retrieve.
      */
     abstract protected fun latestUpdatesRequest(page: Int): Request
 
     /**
-     * Parses the response from the site and returns a [MangasPage] object.
+     * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    abstract protected fun latestUpdatesParse(response: Response): MangasPage
+    abstract protected fun latestUpdatesParse(response: Response): AnimesPage
 
     /**
-     * Returns an observable with the updated details for a manga. Normally it's not needed to
+     * Returns an observable with the updated details for a anime. Normally it's not needed to
      * override this method.
      *
-     * @param manga the manga to be updated.
+     * @param anime the anime to be updated.
      */
-    override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
+    override fun fetchAnimeDetails(anime: SAnime): Observable<SAnime> {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the request for the details of a manga. Override only if it's needed to change the
+     * Returns the request for the details of a anime. Override only if it's needed to change the
      * url, send different headers or request method like POST.
      *
-     * @param manga the manga to be updated.
+     * @param anime the anime to be updated.
      */
-    open fun mangaDetailsRequest(manga: SManga): Request {
+    open fun animeDetailsRequest(anime: SAnime): Request {
         throw Exception("Stub!")
     }
 
     /**
-     * Parses the response from the site and returns the details of a manga.
+     * Parses the response from the site and returns the details of a anime.
      *
      * @param response the response from the site.
      */
-    abstract protected fun mangaDetailsParse(response: Response): SManga
+    abstract protected fun animeDetailsParse(response: Response): SAnime
 
     /**
-     * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
+     * Returns an observable with the updated episode list for a anime. Normally it's not needed to
      * override this method.
      *
-     * @param manga the manga to look for chapters.
+     * @param anime the anime to look for episodes.
      */
-    override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
+    override fun fetchEpisodeList(anime: SAnime): Observable<List<SEpisode>> {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the request for updating the chapter list. Override only if it's needed to override
+     * Returns the request for updating the episode list. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
-     * @param manga the manga to look for chapters.
+     * @param anime the anime to look for episodes.
      */
-    open protected fun chapterListRequest(manga: SManga): Request {
+    open protected fun episodeListRequest(anime: SAnime): Request {
         throw Exception("Stub!")
     }
 
     /**
-     * Parses the response from the site and returns a list of chapters.
+     * Parses the response from the site and returns a list of episodes.
      *
      * @param response the response from the site.
      */
-    abstract protected fun chapterListParse(response: Response): List<SChapter>
+    abstract protected fun episodeListParse(response: Response): List<SEpisode>
 
     /**
-     * Returns an observable with the page list for a chapter.
+     * Returns an observable with the page list for a episode.
      *
-     * @param chapter the chapter whose page list has to be fetched.
+     * @param episode the episode whose page list has to be fetched.
      */
-    override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
+    override fun fetchPageList(episode: SEpisode): Observable<List<Page>> {
         throw Exception("Stub!")
     }
 
@@ -204,9 +204,9 @@ abstract class HttpSource : CatalogueSource {
      * Returns the request for getting the page list. Override only if it's needed to override the
      * url, send different headers or request method like POST.
      *
-     * @param chapter the chapter whose page list has to be fetched.
+     * @param episode the episode whose page list has to be fetched.
      */
-    open protected fun pageListRequest(chapter: SChapter): Request {
+    open protected fun pageListRequest(episode: SEpisode): Request {
         throw Exception("Stub!")
     }
 
@@ -231,7 +231,7 @@ abstract class HttpSource : CatalogueSource {
      * Returns the request for getting the url to the source image. Override only if it's needed to
      * override the url, send different headers or request method like POST.
      *
-     * @param page the chapter whose page list has to be fetched
+     * @param page the episode whose page list has to be fetched
      */
     open protected fun imageUrlRequest(page: Page): Request {
         throw Exception("Stub!")
@@ -257,29 +257,29 @@ abstract class HttpSource : CatalogueSource {
      * Returns the request for getting the source image. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
-     * @param page the chapter whose page list has to be fetched
+     * @param page the episode whose page list has to be fetched
      */
     open protected fun imageRequest(page: Page): Request {
         throw Exception("Stub!")
     }
 
     /**
-     * Assigns the url of the chapter without the scheme and domain. It saves some redundancy from
+     * Assigns the url of the episode without the scheme and domain. It saves some redundancy from
      * database and the urls could still work after a domain change.
      *
-     * @param url the full url to the chapter.
+     * @param url the full url to the episode.
      */
-    fun SChapter.setUrlWithoutDomain(url: String) {
+    fun SEpisode.setUrlWithoutDomain(url: String) {
         throw Exception("Stub!")
     }
 
     /**
-     * Assigns the url of the manga without the scheme and domain. It saves some redundancy from
+     * Assigns the url of the anime without the scheme and domain. It saves some redundancy from
      * database and the urls could still work after a domain change.
      *
-     * @param url the full url to the manga.
+     * @param url the full url to the anime.
      */
-    fun SManga.setUrlWithoutDomain(url: String) {
+    fun SAnime.setUrlWithoutDomain(url: String) {
         throw Exception("Stub!")
     }
 
@@ -293,13 +293,13 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Called before inserting a new chapter into database. Use it if you need to override chapter
-     * fields, like the title or the chapter number. Do not change anything to [manga].
+     * Called before inserting a new episode into database. Use it if you need to override episode
+     * fields, like the title or the episode number. Do not change anything to [anime].
      *
-     * @param chapter the chapter to be added.
-     * @param manga the manga of the chapter.
+     * @param episode the episode to be added.
+     * @param anime the anime of the episode.
      */
-    open fun prepareNewChapter(chapter: SChapter, manga: SManga) {
+    open fun prepareNewEpisode(episode: SEpisode, anime: SAnime) {
     }
 
     /**

@@ -1,9 +1,9 @@
 package eu.kanade.tachiyomi.source.online
 
-import eu.kanade.tachiyomi.source.model.MangasPage
+import eu.kanade.tachiyomi.source.model.AnimesPage
 import eu.kanade.tachiyomi.source.model.Page
-import eu.kanade.tachiyomi.source.model.SChapter
-import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SEpisode
+import eu.kanade.tachiyomi.source.model.SAnime
 import okhttp3.Response
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -15,82 +15,82 @@ import org.jsoup.nodes.Element
 abstract class ParsedHttpSource : HttpSource() {
 
     /**
-     * Parses the response from the site and returns a [MangasPage] object.
+     * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    override fun popularMangaParse(response: Response): MangasPage {
+    override fun popularAnimeParse(response: Response): AnimesPage {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
+     * Returns the Jsoup selector that returns a list of [Element] corresponding to each anime.
      */
-    abstract protected fun popularMangaSelector(): String
+    abstract protected fun popularAnimeSelector(): String
 
     /**
-     * Returns a manga from the given [element]. Most sites only show the title and the url, it's
+     * Returns a anime from the given [element]. Most sites only show the title and the url, it's
      * totally fine to fill only those two values.
      *
-     * @param element an element obtained from [popularMangaSelector].
+     * @param element an element obtained from [popularAnimeSelector].
      */
-    abstract protected fun popularMangaFromElement(element: Element): SManga
+    abstract protected fun popularAnimeFromElement(element: Element): SAnime
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    abstract protected fun popularMangaNextPageSelector(): String?
+    abstract protected fun popularAnimeNextPageSelector(): String?
 
     /**
-     * Parses the response from the site and returns a [MangasPage] object.
+     * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    override fun searchMangaParse(response: Response): MangasPage {
+    override fun searchAnimeParse(response: Response): AnimesPage {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
+     * Returns the Jsoup selector that returns a list of [Element] corresponding to each anime.
      */
-    abstract protected fun searchMangaSelector(): String
+    abstract protected fun searchAnimeSelector(): String
 
     /**
-     * Returns a manga from the given [element]. Most sites only show the title and the url, it's
+     * Returns a anime from the given [element]. Most sites only show the title and the url, it's
      * totally fine to fill only those two values.
      *
-     * @param element an element obtained from [searchMangaSelector].
+     * @param element an element obtained from [searchAnimeSelector].
      */
-    abstract protected fun searchMangaFromElement(element: Element): SManga
+    abstract protected fun searchAnimeFromElement(element: Element): SAnime
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    abstract protected fun searchMangaNextPageSelector(): String?
+    abstract protected fun searchAnimeNextPageSelector(): String?
 
     /**
-     * Parses the response from the site and returns a [MangasPage] object.
+     * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    override fun latestUpdatesParse(response: Response): MangasPage {
+    override fun latestUpdatesParse(response: Response): AnimesPage {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
+     * Returns the Jsoup selector that returns a list of [Element] corresponding to each anime.
      */
     abstract protected fun latestUpdatesSelector(): String
 
     /**
-     * Returns a manga from the given [element]. Most sites only show the title and the url, it's
+     * Returns a anime from the given [element]. Most sites only show the title and the url, it's
      * totally fine to fill only those two values.
      *
      * @param element an element obtained from [latestUpdatesSelector].
      */
-    abstract protected fun latestUpdatesFromElement(element: Element): SManga
+    abstract protected fun latestUpdatesFromElement(element: Element): SAnime
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
@@ -99,41 +99,41 @@ abstract class ParsedHttpSource : HttpSource() {
     abstract protected fun latestUpdatesNextPageSelector(): String?
 
     /**
-     * Parses the response from the site and returns the details of a manga.
+     * Parses the response from the site and returns the details of a anime.
      *
      * @param response the response from the site.
      */
-    override fun mangaDetailsParse(response: Response): SManga {
+    override fun animeDetailsParse(response: Response): SAnime {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the details of the manga from the given [document].
+     * Returns the details of the anime from the given [document].
      *
      * @param document the parsed document.
      */
-    abstract protected fun mangaDetailsParse(document: Document): SManga
+    abstract protected fun animeDetailsParse(document: Document): SAnime
 
     /**
-     * Parses the response from the site and returns a list of chapters.
+     * Parses the response from the site and returns a list of episodes.
      *
      * @param response the response from the site.
      */
-    override fun chapterListParse(response: Response): List<SChapter> {
+    override fun episodeListParse(response: Response): List<SEpisode> {
         throw Exception("Stub!")
     }
 
     /**
-     * Returns the Jsoup selector that returns a list of [Element] corresponding to each chapter.
+     * Returns the Jsoup selector that returns a list of [Element] corresponding to each episode.
      */
-    abstract protected fun chapterListSelector(): String
+    abstract protected fun episodeListSelector(): String
 
     /**
-     * Returns a chapter from the given element.
+     * Returns a episode from the given element.
      *
-     * @param element an element obtained from [chapterListSelector].
+     * @param element an element obtained from [episodeListSelector].
      */
-    abstract protected fun chapterFromElement(element: Element): SChapter
+    abstract protected fun episodeFromElement(element: Element): SEpisode
 
     /**
      * Parses the response from the site and returns the page list.
