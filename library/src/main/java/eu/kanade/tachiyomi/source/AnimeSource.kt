@@ -8,7 +8,7 @@ import rx.Observable
 /**
  * A basic interface for creating a source. It could be an online source, a local source, etc...
  */
-interface Source {
+interface AnimeSource {
 
     /**
      * Id for the source. Must be unique.

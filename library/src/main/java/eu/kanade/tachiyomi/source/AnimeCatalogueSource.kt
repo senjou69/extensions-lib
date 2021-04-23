@@ -4,7 +4,7 @@ import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.AnimesPage
 import rx.Observable
 
-interface CatalogueSource : Source {
+interface AnimeCatalogueSource : AnimeSource {
 
     /**
      * An ISO 639-1 compliant language code (two letters in lower case).
