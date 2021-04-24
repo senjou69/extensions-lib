@@ -12,7 +12,7 @@ import org.jsoup.nodes.Element
  * A simple implementation for sources from a website using Jsoup, an HTML parser.
  */
 @Suppress("unused", "unused_parameter")
-abstract class ParsedHttpSource : HttpSource() {
+abstract class ParsedHttpSource : AnimeHttpSource() {
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.

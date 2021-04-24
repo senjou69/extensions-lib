@@ -13,7 +13,7 @@ import rx.Observable
  * A simple implementation for sources from a website.
  */
 @Suppress("unused", "unused_parameter")
-abstract class HttpSource : AnimeCatalogueSource {
+abstract class AnimeHttpSource : AnimeCatalogueSource {
 
     /**
      * Network service.
