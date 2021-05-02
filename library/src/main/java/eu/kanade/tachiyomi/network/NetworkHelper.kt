@@ -6,13 +6,7 @@ import java.util.concurrent.TimeUnit
 
 class NetworkHelper(context: Context) {
 
-    val client by lazy {
-        val builder = OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-
-        builder.build()
-    }
+    val client: OkHttpClient = throw Exception("Stub!")
 
     val cloudflareClient: OkHttpClient = throw Exception("Stub!")
 }

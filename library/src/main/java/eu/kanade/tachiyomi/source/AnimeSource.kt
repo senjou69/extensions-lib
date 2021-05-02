@@ -35,6 +35,13 @@ interface AnimeSource {
     fun fetchEpisodeList(anime: SAnime): Observable<List<SEpisode>>
 
     /**
+     * Returns an observable with all the available episodes for a anime.
+     *
+     * @param anime the anime to update.
+     */
+    fun fetchEpisodeLink(episode: SEpisode): Observable<String>
+
+    /**
      * Returns an observable with the list of pages a episode has.
      *
      * @param episode the episode.

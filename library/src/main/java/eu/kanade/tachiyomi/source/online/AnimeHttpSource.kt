@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.source.online
 
 import eu.kanade.tachiyomi.network.NetworkHelper
+import eu.kanade.tachiyomi.network.asObservableSuccess
 import eu.kanade.tachiyomi.source.AnimeCatalogueSource
 import eu.kanade.tachiyomi.source.model.*
 import okhttp3.Headers
@@ -174,6 +175,10 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
         throw Exception("Stub!")
     }
 
+    override fun fetchEpisodeLink(episode: SEpisode): Observable<String> {
+        throw Exception("Stub!")
+    }
+
     /**
      * Returns the request for updating the episode list. Override only if it's needed to override
      * the url, send different headers or request method like POST.
@@ -190,6 +195,13 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      * @param response the response from the site.
      */
     abstract protected fun episodeListParse(response: Response): List<SEpisode>
+
+    /**
+     * Parses the response from the site and returns a link for the episode.
+     *
+     * @param response the response from the site.
+     */
+    abstract protected fun episodeLinkParse(response: Response): String
 
     /**
      * Returns an observable with the page list for a episode.
