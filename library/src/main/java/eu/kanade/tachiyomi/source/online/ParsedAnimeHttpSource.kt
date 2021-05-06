@@ -1,7 +1,6 @@
 package eu.kanade.tachiyomi.source.online
 
 import eu.kanade.tachiyomi.source.model.AnimesPage
-import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SEpisode
 import eu.kanade.tachiyomi.source.model.SAnime
 import okhttp3.Response
@@ -155,36 +154,4 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      * @param element an element obtained from [episodeLinkSelector].
      */
     abstract protected fun linkFromElement(element: Element): String
-
-    /**
-     * Parses the response from the site and returns the page list.
-     *
-     * @param response the response from the site.
-     */
-    override fun pageListParse(response: Response): List<Page> {
-        throw Exception("Stub!")
-    }
-
-    /**
-     * Returns a page list from the given document.
-     *
-     * @param document the parsed document.
-     */
-    abstract protected fun pageListParse(document: Document): List<Page>
-
-    /**
-     * Parse the response from the site and returns the absolute url to the source image.
-     *
-     * @param response the response from the site.
-     */
-    override fun imageUrlParse(response: Response): String {
-        throw Exception("Stub!")
-    }
-
-    /**
-     * Returns the absolute url to the source image from the document.
-     *
-     * @param document the parsed document.
-     */
-    abstract protected fun imageUrlParse(document: Document): String
 }

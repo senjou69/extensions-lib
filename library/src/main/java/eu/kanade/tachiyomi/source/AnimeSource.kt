@@ -1,6 +1,5 @@
 package eu.kanade.tachiyomi.source
 
-import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SEpisode
 import eu.kanade.tachiyomi.source.model.SAnime
 import rx.Observable
@@ -40,12 +39,4 @@ interface AnimeSource {
      * @param anime the anime to update.
      */
     fun fetchEpisodeLink(episode: SEpisode): Observable<String>
-
-    /**
-     * Returns an observable with the list of pages a episode has.
-     *
-     * @param episode the episode.
-     */
-    fun fetchPageList(episode: SEpisode): Observable<List<Page>>
-
 }
