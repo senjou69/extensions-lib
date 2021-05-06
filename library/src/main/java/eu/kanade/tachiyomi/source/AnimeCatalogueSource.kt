@@ -1,10 +1,10 @@
 package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.FilterList
-import eu.kanade.tachiyomi.source.model.MangasPage
+import eu.kanade.tachiyomi.source.model.AnimesPage
 import rx.Observable
 
-interface CatalogueSource : Source {
+interface AnimeCatalogueSource : AnimeSource {
 
     /**
      * An ISO 639-1 compliant language code (two letters in lower case).
@@ -17,27 +17,27 @@ interface CatalogueSource : Source {
     val supportsLatest: Boolean
 
     /**
-     * Returns an observable containing a page with a list of manga.
+     * Returns an observable containing a page with a list of anime.
      *
      * @param page the page number to retrieve.
      */
-    fun fetchPopularManga(page: Int): Observable<MangasPage>
+    fun fetchPopularAnime(page: Int): Observable<AnimesPage>
 
     /**
-     * Returns an observable containing a page with a list of manga.
+     * Returns an observable containing a page with a list of anime.
      *
      * @param page the page number to retrieve.
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage>
+    fun fetchSearchAnime(page: Int, query: String, filters: FilterList): Observable<AnimesPage>
 
     /**
-     * Returns an observable containing a page with a list of latest manga updates.
+     * Returns an observable containing a page with a list of latest anime updates.
      *
      * @param page the page number to retrieve.
      */
-    fun fetchLatestUpdates(page: Int): Observable<MangasPage>
+    fun fetchLatestUpdates(page: Int): Observable<AnimesPage>
 
     /**
      * Returns the list of filters for the source.

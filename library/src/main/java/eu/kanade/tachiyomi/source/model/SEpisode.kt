@@ -1,6 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
-interface SChapter {
+interface SEpisode {
 
     var url: String
 
@@ -8,12 +8,12 @@ interface SChapter {
 
     var date_upload: Long
 
-    var chapter_number: Float
+    var episode_number: Float
 
     var scanlator: String?
 
     companion object {
-        fun create(): SChapter {
+        fun create(): SEpisode {
             throw Exception("Stub!")
         }
     }

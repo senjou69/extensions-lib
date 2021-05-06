@@ -1,6 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
-interface SManga {
+interface SAnime {
 
     var url: String
 
@@ -26,7 +26,7 @@ interface SManga {
         const val COMPLETED = 2
         const val LICENSED = 3
 
-        fun create(): SManga {
+        fun create(): SAnime {
             throw Exception("Stub!")
         }
     }
