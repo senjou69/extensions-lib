@@ -94,7 +94,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    override fun fetchSearchAnime(page: Int, query: String, filters: FilterList): Observable<AnimesPage> {
+    override fun fetchSearchAnime(page: Int, query: String, filters: AnimeFilterList): Observable<AnimesPage> {
         throw Exception("Stub!")
     }
 
@@ -105,7 +105,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    abstract protected fun searchAnimeRequest(page: Int, query: String, filters: FilterList): Request
+    abstract protected fun searchAnimeRequest(page: Int, query: String, filters: AnimeFilterList): Request
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
@@ -244,7 +244,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
     /**
      * Returns the list of filters for the source.
      */
-    override fun getFilterList(): FilterList {
+    override fun getFilterList(): AnimeFilterList {
         throw Exception("Stub!")
     }
 }
