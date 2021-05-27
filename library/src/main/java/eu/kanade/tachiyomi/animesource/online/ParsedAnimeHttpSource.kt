@@ -1,8 +1,8 @@
-package eu.kanade.tachiyomi.source.online
+package eu.kanade.tachiyomi.animesource.online
 
-import eu.kanade.tachiyomi.source.model.AnimesPage
-import eu.kanade.tachiyomi.source.model.SEpisode
-import eu.kanade.tachiyomi.source.model.SAnime
+import eu.kanade.tachiyomi.animesource.model.AnimesPage
+import eu.kanade.tachiyomi.animesource.model.SEpisode
+import eu.kanade.tachiyomi.animesource.model.SAnime
 import okhttp3.Response
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element

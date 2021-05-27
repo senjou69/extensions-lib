@@ -1,4 +1,4 @@
-package eu.kanade.tachiyomi.source.model
+package eu.kanade.tachiyomi.animesource.model
 
 data class FilterList(val list: List<Filter<*>>) : List<Filter<*>> by list {
 
