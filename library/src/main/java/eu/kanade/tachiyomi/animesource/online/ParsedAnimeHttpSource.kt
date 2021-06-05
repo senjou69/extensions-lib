@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.animesource.online
 
 import eu.kanade.tachiyomi.animesource.model.AnimesPage
+import eu.kanade.tachiyomi.animesource.model.Link
 import eu.kanade.tachiyomi.animesource.model.SEpisode
 import eu.kanade.tachiyomi.animesource.model.SAnime
 import okhttp3.Response
@@ -127,7 +128,7 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun episodeLinkParse(response: Response): List<String> {
+    override fun episodeLinkParse(response: Response): List<Link> {
         throw Exception("Stub!")
     }
 
@@ -153,5 +154,5 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param element an element obtained from [episodeLinkSelector].
      */
-    abstract protected fun linksFromElement(element: Element): List<String>
+    abstract protected fun linksFromElement(element: Element): List<Link>
 }

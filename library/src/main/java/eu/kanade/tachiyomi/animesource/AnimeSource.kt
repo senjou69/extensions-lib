@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.animesource
 
+import eu.kanade.tachiyomi.animesource.model.Link
 import eu.kanade.tachiyomi.animesource.model.SEpisode
 import eu.kanade.tachiyomi.animesource.model.SAnime
 import rx.Observable
@@ -38,5 +39,5 @@ interface AnimeSource {
      *
      * @param anime the anime to update.
      */
-    fun fetchEpisodeLink(episode: SEpisode): Observable<String>
+    fun fetchEpisodeLink(episode: SEpisode): Observable<Link>
 }

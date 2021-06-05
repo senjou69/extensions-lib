@@ -174,7 +174,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
         throw Exception("Stub!")
     }
 
-    override fun fetchEpisodeLink(episode: SEpisode): Observable<String> {
+    override fun fetchEpisodeLink(episode: SEpisode): Observable<Link> {
         throw Exception("Stub!")
     }
 
@@ -200,7 +200,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param response the response from the site.
      */
-    abstract protected fun episodeLinkParse(response: Response): List<String>
+    abstract protected fun episodeLinkParse(response: Response): List<Link>
 
     /**
      * Assigns the url of the episode without the scheme and domain. It saves some redundancy from
