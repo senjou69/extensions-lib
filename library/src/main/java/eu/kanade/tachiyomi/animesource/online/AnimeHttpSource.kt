@@ -184,7 +184,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param anime the anime to look for episodes.
      */
-    open protected fun episodeListRequest(anime: SAnime): Request {
+    open protected fun episodeListRequest(anime: SAnime, page: Int): Request {
         throw Exception("Stub!")
     }
 
@@ -200,7 +200,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param response the response from the site.
      */
-    abstract protected fun episodeLinkParse(response: Response): String
+    abstract protected fun episodeLinkParse(response: Response): List<String>
 
     /**
      * Assigns the url of the episode without the scheme and domain. It saves some redundancy from

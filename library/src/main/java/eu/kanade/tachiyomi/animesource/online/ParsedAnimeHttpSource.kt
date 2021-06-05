@@ -114,6 +114,12 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     abstract protected fun animeDetailsParse(document: Document): SAnime
 
     /**
+     * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
+     * there's no next page.
+     */
+    abstract protected fun episodeListNextPageSelector(): String?
+
+    /**
      * Parses the response from the site and returns a list of episodes.
      *
      * @param response the response from the site.
@@ -127,7 +133,7 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun episodeLinkParse(response: Response): String {
+    override fun episodeLinkParse(response: Response): List<String> {
         throw Exception("Stub!")
     }
 
@@ -153,5 +159,5 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param element an element obtained from [episodeLinkSelector].
      */
-    abstract protected fun linkFromElement(element: Element): String
+    abstract protected fun linksFromElement(element: Element): List<String>
 }
