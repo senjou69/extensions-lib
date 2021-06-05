@@ -184,7 +184,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param anime the anime to look for episodes.
      */
-    open protected fun episodeListRequest(anime: SAnime, page: Int): Request {
+    open protected fun episodeListRequest(anime: SAnime): Request {
         throw Exception("Stub!")
     }
 

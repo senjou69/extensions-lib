@@ -114,12 +114,6 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     abstract protected fun animeDetailsParse(document: Document): SAnime
 
     /**
-     * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
-     * there's no next page.
-     */
-    abstract protected fun episodeListNextPageSelector(): String?
-
-    /**
      * Parses the response from the site and returns a list of episodes.
      *
      * @param response the response from the site.
