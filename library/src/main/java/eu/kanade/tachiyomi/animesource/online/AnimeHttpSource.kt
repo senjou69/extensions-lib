@@ -174,7 +174,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
         throw Exception("Stub!")
     }
 
-    override fun fetchEpisodeLink(episode: SEpisode): Observable<Link> {
+    override fun fetchEpisodeLink(episode: SEpisode): Observable<List<Link>> {
         throw Exception("Stub!")
     }
 

@@ -39,5 +39,5 @@ interface AnimeSource {
      *
      * @param anime the anime to update.
      */
-    fun fetchEpisodeLink(episode: SEpisode): Observable<Link>
+    fun fetchEpisodeLink(episode: SEpisode): Observable<List<Link>>
 }
