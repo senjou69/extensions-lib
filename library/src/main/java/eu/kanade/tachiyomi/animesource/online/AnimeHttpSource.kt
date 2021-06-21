@@ -3,6 +3,7 @@ package eu.kanade.tachiyomi.animesource.online
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.animesource.AnimeCatalogueSource
 import eu.kanade.tachiyomi.animesource.model.*
+import eu.kanade.tachiyomi.network.GET
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -51,7 +52,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
-    open protected fun headersBuilder(): Headers.Builder {
+    protected open fun headersBuilder(): Headers.Builder {
         throw Exception("Stub!")
     }
 
@@ -77,14 +78,14 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    abstract protected fun popularAnimeRequest(page: Int): Request
+    protected abstract fun popularAnimeRequest(page: Int): Request
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    abstract protected fun popularAnimeParse(response: Response): AnimesPage
+    protected abstract fun popularAnimeParse(response: Response): AnimesPage
 
     /**
      * Returns an observable containing a page with a list of anime. Normally it's not needed to
@@ -105,14 +106,14 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    abstract protected fun searchAnimeRequest(page: Int, query: String, filters: AnimeFilterList): Request
+    protected abstract fun searchAnimeRequest(page: Int, query: String, filters: AnimeFilterList): Request
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    abstract protected fun searchAnimeParse(response: Response): AnimesPage
+    protected abstract fun searchAnimeParse(response: Response): AnimesPage
 
     /**
      * Returns an observable containing a page with a list of latest anime updates.
@@ -128,14 +129,14 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    abstract protected fun latestUpdatesRequest(page: Int): Request
+    protected abstract fun latestUpdatesRequest(page: Int): Request
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
      *
      * @param response the response from the site.
      */
-    abstract protected fun latestUpdatesParse(response: Response): AnimesPage
+    protected abstract fun latestUpdatesParse(response: Response): AnimesPage
 
     /**
      * Returns an observable with the updated details for a anime. Normally it's not needed to
@@ -162,7 +163,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param response the response from the site.
      */
-    abstract protected fun animeDetailsParse(response: Response): SAnime
+    protected abstract fun animeDetailsParse(response: Response): SAnime
 
     /**
      * Returns an observable with the updated episode list for a anime. Normally it's not needed to
@@ -174,7 +175,11 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
         throw Exception("Stub!")
     }
 
-    override fun fetchEpisodeLink(episode: SEpisode): Observable<List<Link>> {
+    override fun fetchVideoList(episode: SEpisode): Observable<List<Video>> {
+        throw Exception("Stub!")
+    }
+
+    open fun fetchVideoUrl(video: Video): Observable<String> {
         throw Exception("Stub!")
     }
 
@@ -184,7 +189,7 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param anime the anime to look for episodes.
      */
-    open protected fun episodeListRequest(anime: SAnime): Request {
+    protected open fun episodeListRequest(anime: SAnime): Request {
         throw Exception("Stub!")
     }
 
@@ -193,14 +198,40 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      *
      * @param response the response from the site.
      */
-    abstract protected fun episodeListParse(response: Response): List<SEpisode>
+    protected abstract fun episodeListParse(response: Response): List<SEpisode>
 
     /**
-     * Parses the response from the site and returns a link for the episode.
+     * Returns the request for getting the video list. Override only if it's needed to override
+     * the url, send different headers or request method like POST.
+     *
+     * @param episode the episode to look for videos.
+     */
+    protected open fun videoListRequest(episode: SEpisode): Request {
+        throw Exception("Stub!")
+    }
+
+    /**
+     * Parses the response from the site and returns a list of videos.
      *
      * @param response the response from the site.
      */
-    abstract protected fun episodeLinkParse(response: Response): List<Link>
+    protected open fun videoListParse(response: Response): List<Video> {
+        throw Exception("Stub!")
+    }
+
+    /**
+     * Returns the request for getting the url to the source image. Override only if it's needed to
+     * override the url, send different headers or request method like POST.
+     *
+     * @param page the chapter whose page list has to be fetched
+     */
+    protected open fun videoUrlRequest(video: Video): Request {
+        throw Exception("Stub!")
+    }
+
+    protected open fun videoUrlParse(response: Response): String {
+        throw Exception("Stub!")
+    }
 
     /**
      * Assigns the url of the episode without the scheme and domain. It saves some redundancy from

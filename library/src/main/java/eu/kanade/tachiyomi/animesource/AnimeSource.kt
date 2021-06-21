@@ -1,6 +1,6 @@
 package eu.kanade.tachiyomi.animesource
 
-import eu.kanade.tachiyomi.animesource.model.Link
+import eu.kanade.tachiyomi.animesource.model.Video
 import eu.kanade.tachiyomi.animesource.model.SEpisode
 import eu.kanade.tachiyomi.animesource.model.SAnime
 import rx.Observable
@@ -35,9 +35,9 @@ interface AnimeSource {
     fun fetchEpisodeList(anime: SAnime): Observable<List<SEpisode>>
 
     /**
-     * Returns an observable with all the available episodes for a anime.
+     * Returns an observable with a list of video for the episode of an anime.
      *
-     * @param anime the anime to update.
+     * @param episode the anime to update.
      */
-    fun fetchEpisodeLink(episode: SEpisode): Observable<List<Link>>
+    fun fetchVideoList(episode: SEpisode): Observable<List<Video>>
 }

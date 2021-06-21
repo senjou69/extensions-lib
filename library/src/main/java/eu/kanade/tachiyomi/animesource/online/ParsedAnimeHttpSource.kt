@@ -1,9 +1,10 @@
 package eu.kanade.tachiyomi.animesource.online
 
 import eu.kanade.tachiyomi.animesource.model.AnimesPage
-import eu.kanade.tachiyomi.animesource.model.Link
+import eu.kanade.tachiyomi.animesource.model.Video
 import eu.kanade.tachiyomi.animesource.model.SEpisode
 import eu.kanade.tachiyomi.animesource.model.SAnime
+import okhttp3.Request
 import okhttp3.Response
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -26,7 +27,7 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each anime.
      */
-    abstract protected fun popularAnimeSelector(): String
+    protected abstract fun popularAnimeSelector(): String
 
     /**
      * Returns a anime from the given [element]. Most sites only show the title and the url, it's
@@ -34,13 +35,13 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param element an element obtained from [popularAnimeSelector].
      */
-    abstract protected fun popularAnimeFromElement(element: Element): SAnime
+    protected abstract fun popularAnimeFromElement(element: Element): SAnime
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    abstract protected fun popularAnimeNextPageSelector(): String?
+    protected abstract fun popularAnimeNextPageSelector(): String?
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
@@ -54,7 +55,7 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each anime.
      */
-    abstract protected fun searchAnimeSelector(): String
+    protected abstract fun searchAnimeSelector(): String
 
     /**
      * Returns a anime from the given [element]. Most sites only show the title and the url, it's
@@ -62,13 +63,13 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param element an element obtained from [searchAnimeSelector].
      */
-    abstract protected fun searchAnimeFromElement(element: Element): SAnime
+    protected abstract fun searchAnimeFromElement(element: Element): SAnime
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    abstract protected fun searchAnimeNextPageSelector(): String?
+    protected abstract fun searchAnimeNextPageSelector(): String?
 
     /**
      * Parses the response from the site and returns a [AnimesPage] object.
@@ -82,7 +83,7 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each anime.
      */
-    abstract protected fun latestUpdatesSelector(): String
+    protected abstract fun latestUpdatesSelector(): String
 
     /**
      * Returns a anime from the given [element]. Most sites only show the title and the url, it's
@@ -90,13 +91,13 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param element an element obtained from [latestUpdatesSelector].
      */
-    abstract protected fun latestUpdatesFromElement(element: Element): SAnime
+    protected abstract fun latestUpdatesFromElement(element: Element): SAnime
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    abstract protected fun latestUpdatesNextPageSelector(): String?
+    protected abstract fun latestUpdatesNextPageSelector(): String?
 
     /**
      * Parses the response from the site and returns the details of a anime.
@@ -112,7 +113,7 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
      *
      * @param document the parsed document.
      */
-    abstract protected fun animeDetailsParse(document: Document): SAnime
+    protected abstract fun animeDetailsParse(document: Document): SAnime
 
     /**
      * Parses the response from the site and returns a list of episodes.
@@ -124,35 +125,51 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     }
 
     /**
-     * Parses the response from the site and returns a list of episodes.
-     *
-     * @param response the response from the site.
-     */
-    override fun episodeLinkParse(response: Response): List<Link> {
-        throw Exception("Stub!")
-    }
-
-    /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each episode.
      */
-    abstract protected fun episodeListSelector(): String
+    protected abstract fun episodeListSelector(): String
 
     /**
      * Returns a episode from the given element.
      *
      * @param element an element obtained from [episodeListSelector].
      */
-    abstract protected fun episodeFromElement(element: Element): SEpisode
+    protected abstract fun episodeFromElement(element: Element): SEpisode
+
+    /**
+     * Parses the response from the site and returns a list of episodes.
+     *
+     * @param response the response from the site.
+     */
+    override fun videoListParse(response: Response): List<Video> {
+        throw Exception("Stub!")
+    }
 
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each episode.
      */
-    abstract protected fun episodeLinkSelector(): String
+    protected abstract fun videoListSelector(): String
 
     /**
-     * Returns a link from the given element.
+     * Returns a episode from the given element.
      *
-     * @param element an element obtained from [episodeLinkSelector].
+     * @param element an element obtained from [episodeListSelector].
      */
-    abstract protected fun linksFromElement(element: Element): List<Link>
+    protected abstract fun videoFromElement(element: Element): Video
+
+    override fun videoUrlParse(response: Response): String {
+        throw Exception("Stub!")
+    }
+
+    /**
+     * Returns the Jsoup selector that returns a list of [Element] corresponding to each video URL.
+     */
+    protected abstract fun videoUrlSelector(): String
+
+    /**
+     * Returns a video URL from the given element.
+     *
+     * @param element an element obtained from [episodeListSelector].
+     */
+    protected abstract fun videoUrlFromElement(element: Element): String
 }
