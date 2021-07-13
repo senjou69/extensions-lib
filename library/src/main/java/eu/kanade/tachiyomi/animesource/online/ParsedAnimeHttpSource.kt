@@ -162,14 +162,9 @@ abstract class ParsedAnimeHttpSource : AnimeHttpSource() {
     }
 
     /**
-     * Returns the Jsoup selector that returns a list of [Element] corresponding to each video URL.
-     */
-    protected abstract fun videoUrlSelector(): String
-
-    /**
-     * Returns a video URL from the given element.
+     * Returns the absolute url to the source image from the document.
      *
-     * @param element an element obtained from [episodeListSelector].
+     * @param document the parsed document.
      */
-    protected abstract fun videoUrlFromElement(element: Element): String
+    protected abstract fun videoUrlParse(document: Document): String
 }
