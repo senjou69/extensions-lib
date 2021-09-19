@@ -45,11 +45,6 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
     val headers: Headers = throw Exception("Stub!")
 
     /**
-     * Headers used for playing the video file
-     */
-    val videoHeaders: Headers = throw Exception("Stub!")
-
-    /**
      * Default network client for doing requests.
      */
     open val client: OkHttpClient = throw Exception("Stub!")
@@ -58,13 +53,6 @@ abstract class AnimeHttpSource : AnimeCatalogueSource {
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
     protected open fun headersBuilder(): Headers.Builder {
-        throw Exception("Stub!")
-    }
-
-    /**
-     * Headers builder for video requests. Implementations can override this method for custom headers.
-     */
-    protected open fun videoHeadersBuilder(): Headers.Builder {
         throw Exception("Stub!")
     }
 
