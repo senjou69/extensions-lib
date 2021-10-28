@@ -15,6 +15,8 @@ interface SAnime {
     var genre: String?
 
     var status: Int
+    
+    var next_ep_wen: String?
 
     var thumbnail_url: String?
 
