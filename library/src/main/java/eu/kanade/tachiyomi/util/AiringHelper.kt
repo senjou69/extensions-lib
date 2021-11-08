@@ -1,4 +1,4 @@
-package airinghelper
+package eu.kanade.tachiyomi.util
 
 import android.annotation.SuppressLint
 import android.os.Build
