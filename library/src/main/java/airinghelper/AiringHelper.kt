@@ -76,7 +76,3 @@ fun airingmsg(episode: String, airingat: String): String {
     }
 
 }
-
-class AiringHelper{
-    val a = "b"
-}
